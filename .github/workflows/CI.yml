@@ -10,10 +10,13 @@ on:
       - master
     paths-ignore:
       - 'docs/**'
+  schedule:
+      - cron: '54 12 * * 5'
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         group:
           - Core
